@@ -66,6 +66,15 @@ Player.prototype.move = function () {
         this.speed * Math.sin(this.direction) + this.position.y,
         this.graphic.position.z
     );
+    console.log(this.speed * Math.cos(this.direction) + this.position.x, WIDTH);
+    if (this.speed * Math.cos(this.direction) + this.position.x > WIDTH/2)
+        return;
+    if (this.speed * Math.sin(this.direction) + this.position.y > HEIGHT/2)
+        return;
+    if (this.speed * Math.cos(this.direction) + this.position.x < -WIDTH/2)
+        return;
+    if (this.speed * Math.sin(this.direction) + this.position.y < -HEIGHT/2)
+        return;
 
     this.position = moveTo;
 
