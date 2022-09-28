@@ -18,7 +18,7 @@ function init()
     camera.position.z = 500;
     scene.add(camera);
 
-    renderer.setSize(WIDTH, HEIGHT);
+    renderer.setSize(WIDTH, HEIGHT);    
 
     $container.append(renderer.domElement);
 
@@ -26,7 +26,14 @@ function init()
     ground = new Ground(0xffffff, WIDTH, HEIGHT, 10);
     
     player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+    enemy1 = new Enemy("enemy1", 0xff0000, new THREE.Vector2(-120, 0), 0)
+    enemy2 = new Enemy("enemy2", 0xff0000, new THREE.Vector2(150, 100), 2)
+    enemy3 = new Enemy("enemy3", 0xff0000, new THREE.Vector2(-50, 200), 1)
+
     scene.add(player1.graphic);
+    scene.add(enemy1.graphic);
+    scene.add(enemy2.graphic);
+    scene.add(enemy3.graphic);
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
@@ -71,7 +78,7 @@ function Ground(color, size_x, size_y, nb_tile)
 
 function Light(name, color, position)
 {
-    pointLight = new THREE.PointLight(color, 550, 1000);
+    pointLight = new THREE.PointLight(color, 10, 1000);
 
     pointLight.position.x = position.split(',')[0];
     pointLight.position.y = position.split(',')[1];
