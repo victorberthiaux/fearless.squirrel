@@ -36,7 +36,7 @@ function collisions()
 {
     bullet_collision();
     player_collision();
-    //player_falling();
+    player_falling();
 }
 
 function bullet_collision()
