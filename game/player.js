@@ -51,24 +51,14 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction = 0;
-    //this.graphic.lookAt(0,100000,0);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
-    this.direction = Math.PI;
-    //this.graphic.lookAt(0,-100000,0);
+    this.direction += angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
 };
-
-Player.prototype.turnUp = function (angle) {
-    this.direction = Math.PI/2;
-    //this.graphic.lookAt(1000000,0,0);
-};
-
-Player.prototype.turnDown = function (angle) {
-    this.direction = 3 * Math.PI/ 2;
-    //this.graphic.lookAt(-1000,0,0);
-};  
 
 Player.prototype.move = function () {
     var moveTo = new THREE.Vector3(
