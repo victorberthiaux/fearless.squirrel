@@ -48,7 +48,11 @@ function Ground(color, size_x, size_y, nb_tile)
         for (y = minY; y <= maxY; y = y+sizeOfTileY){
 
             color = colors[Math.floor(Math.random()*colors.length)];
-       
+
+            while (x == sizeOfTileX && y == 0 && color==0x000000) {
+                color = colors[Math.floor(Math.random()*colors.length)];
+            }
+
             if (0x000000 != color)
             {
                 tmpGround = new THREE.Mesh(
@@ -58,15 +62,16 @@ function Ground(color, size_x, size_y, nb_tile)
                 tmpGround.position.y = y;
                 scene.add(tmpGround);
             }
-            else
+            else {
                 noGround.push([x, y]);
+            }
         }
     }
 }
 
-function Lighht(name, color, position)
+function Light(name, color, position)
 {
-    pointLight = new THREE.PointLight(color, 50, 350);
+    pointLight = new THREE.PointLight(color, 550, 1000);
 
     pointLight.position.x = position.split(',')[0];
     pointLight.position.y = position.split(',')[1];
